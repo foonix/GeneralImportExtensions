@@ -1,0 +1,18 @@
+{
+    "name": "org.foonix.generalimportextensions",
+    "version": "0.0.1",
+    "displayName": "General Import Extensions",
+    "description": "A collecition of ThunderKit importer processes useful for multiple games.",
+    "unity": "2021.3",
+    "documentationUrl": "https://github.com/foonix/GeneralImportExtensions",
+    "changelogUrl": "",
+    "licensesUrl": "",
+    "dependencies": {
+    },
+    "keywords": [
+    ],
+    "author": {
+        "name": "foonix",
+        "url": "https://github.com/foonix/GeneralImportExtensions"
+    }
+}
