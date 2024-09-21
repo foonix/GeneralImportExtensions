@@ -50,11 +50,16 @@ namespace GeneralImportExtensions.ImportExtensions
                 "-d", gameManagedDir,
                 "-cg",
                 "--cg-exclude-events",
-                "--remove-readonly",
                 "--unity-non-serialized",
-                assemblyPath,
-                outputPath
             };
+
+            if (dataStorer.removeReadonly)
+            {
+                arguments.Add("--remove-readonly");
+            }
+
+            arguments.Add(assemblyPath);
+            arguments.Add(outputPath);
 
             List<string> log = new List<string> { $"Publicized {assemblyFileName} with the following arguments:" };
             log.AddRange(StripAssembly(arguments, nstripPath));

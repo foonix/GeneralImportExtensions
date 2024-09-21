@@ -20,6 +20,8 @@ namespace GeneralImportExtensions.ImportExtensions
 
         public List<string> assemblyNames = new List<string> { "Assembly-CSharp.dll" };
 
+        public bool removeReadonly = true;
+
         public UnityEngine.Object NStripExecutable;
 
         private SerializedObject serializedObject;
@@ -45,6 +47,8 @@ namespace GeneralImportExtensions.ImportExtensions
             serializedObject = new SerializedObject(this);
             var executableProperty = serializedObject.FindProperty(nameof(NStripExecutable));
             var assemblyList = serializedObject.FindProperty(nameof(assemblyNames));
+            var removeReadonlyProperty = serializedObject.FindProperty(nameof(removeReadonly));
+
             rootVisualElement = new VisualElement();
 
             //Nstrip should ideally be located automatically, This method should find it if nstrip is in Packages, which it should be.
@@ -73,6 +77,11 @@ namespace GeneralImportExtensions.ImportExtensions
             PropertyField listField = new PropertyField(assemblyList);
             listField.tooltip = $"A list of assembly names to publicize, Case Sensitive.";
             rootVisualElement.Add(listField);
+
+            PropertyField removeReadonlyField = new PropertyField(removeReadonlyProperty);
+            removeReadonlyField.tooltip = "If the readonly modifier should be removed. (Can cause issues with Burst compilation)";
+            rootVisualElement.Add(removeReadonlyField);
+
             return rootVisualElement;
         }
 
